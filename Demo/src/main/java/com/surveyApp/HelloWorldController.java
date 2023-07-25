@@ -1,4 +1,4 @@
-package com.example.hw.Demo;
+package com.surveyApp;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

@@ -1,6 +1,5 @@
-package edu.gmu.springboot.repository;
+package com.surveyApp.survey;
 
-import edu.gmu.springboot.model.Survey;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface SurveyRepository extends JpaRepository<Survey, Long> {
