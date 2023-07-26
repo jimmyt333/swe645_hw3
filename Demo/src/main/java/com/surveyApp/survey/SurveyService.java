@@ -1,13 +1,18 @@
+/**
+ * Name: Jimmy Tran
+ * G#: G01130635
+ * Name: Jacob Groen
+ * G#: G01149885
+ * Name: Kelvin Lu
+ * G#: G01194210
+ * Course-Section: SWE645-001
+ * Assignment: #3
+ * Provides abstraction layer between SurveyController and SurveyRepository, handles complex operations and data flow.
+ **/
+
 package com.surveyApp.survey;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import com.surveyApp.survey.ResourceNotFoundException;
-import com.surveyApp.survey.Survey;
-import com.surveyApp.survey.SurveyRepository;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -24,14 +29,26 @@ public class SurveyService {
         return surveyRepository.findAll();
     }
 
-    public Optional<Survey> getSurveyById(Long id) {
+    public Survey updateSurveyById(Long id, Survey surveyData) {
+        Optional<Survey> optionalSurvey = surveyRepository.findById(id);
 
-        Optional<Survey> survey = surveyRepository.findById(id);
-
-        if (survey.isPresent()) {
-            return surveyRepository.findById(id);
+        if (optionalSurvey.isPresent()) {
+            Survey existingSurvey = optionalSurvey.get();
+            existingSurvey.setFirstName(surveyData.getFirstName());
+            existingSurvey.setLastName(surveyData.getLastName());
+            existingSurvey.setStreetAddress(surveyData.getStreetAddress());
+            existingSurvey.setCity(surveyData.getCity());
+            existingSurvey.setState(surveyData.getState());
+            existingSurvey.setZip(surveyData.getZip());
+            existingSurvey.setPhoneNumber(surveyData.getPhoneNumber());
+            existingSurvey.setEmail(surveyData.getEmail());
+            existingSurvey.setDateOfSurvey(surveyData.getDateOfSurvey());
+            existingSurvey.setLikedMost(surveyData.getLikedMost());
+            existingSurvey.setInterestedIn(surveyData.getInterestedIn());
+            existingSurvey.setLikelihood(surveyData.getLikelihood());
+            return existingSurvey;
         } else {
-            throw new ResourceNotFoundException("Survey", "Id", id);
+            return null;
         }
     }
 
@@ -39,8 +56,15 @@ public class SurveyService {
         return surveyRepository.save(survey);
     }
 
-    public void deleteSurvey(Long id) {
-        surveyRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Survey", "Id", id));
-        surveyRepository.deleteById(id);
+    public boolean deleteSurvey(Long id) {
+        Optional<Survey> optionalSurvey = surveyRepository.findById(id);
+
+        if (optionalSurvey.isPresent()) {
+            surveyRepository.deleteById(id);
+            return true;
+        } else {
+            return false;
+        }
     }
+
 }

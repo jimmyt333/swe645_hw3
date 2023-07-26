@@ -1,3 +1,15 @@
+/**
+ * Name: Jimmy Tran
+ * G#: G01130635
+ * Name: Jacob Groen
+ * G#: G01149885
+ * Name: Kelvin Lu
+ * G#: G01194210
+ * Course-Section: SWE645-001
+ * Assignment: #3
+ * Persistent data model for instances representing Student Surveys inside the MYSQL DB.
+ **/
+
 package com.surveyApp.survey;
 
 import jakarta.persistence.Column;
@@ -8,7 +20,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 import java.util.Date;
-import java.util.Objects;
 
 @Entity
 @Table(name = "surveys")
@@ -53,53 +64,6 @@ public class Survey {
 
     @Column(name = "likelihood")
     private String likelihood;
-
-    @Override
-    public String toString() {
-        return "Survey{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", streetAddress='" + streetAddress + '\'' +
-                ", city='" + city + '\'' +
-                ", state='" + state + '\'' +
-                ", zip='" + zip + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", email='" + email + '\'' +
-                ", dateOfSurvey=" + dateOfSurvey +
-                ", likedMost='" + likedMost + '\'' +
-                ", interestedIn='" + interestedIn + '\'' +
-                ", likelihood='" + likelihood + '\'' +
-                '}';
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, firstName, lastName, streetAddress, city, state, zip, phoneNumber, email, dateOfSurvey,
-                likedMost, interestedIn, likelihood);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (!(o instanceof Survey))
-            return false;
-        Survey survey = (Survey) o;
-        return Objects.equals(id, survey.id) &&
-                Objects.equals(firstName, survey.firstName) &&
-                Objects.equals(lastName, survey.lastName) &&
-                Objects.equals(streetAddress, survey.streetAddress) &&
-                Objects.equals(city, survey.city) &&
-                Objects.equals(state, survey.state) &&
-                Objects.equals(zip, survey.zip) &&
-                Objects.equals(phoneNumber, survey.phoneNumber) &&
-                Objects.equals(email, survey.email) &&
-                Objects.equals(dateOfSurvey, survey.dateOfSurvey) &&
-                Objects.equals(likedMost, survey.likedMost) &&
-                Objects.equals(interestedIn, survey.interestedIn) &&
-                Objects.equals(likelihood, survey.likelihood);
-    }
 
     // Getters
     public Long getId() {
