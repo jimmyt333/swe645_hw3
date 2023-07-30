@@ -12,6 +12,7 @@ pipeline {
       steps {
         script {
             sh 'rm -rf /target'
+            sh 'ls'
             sh './mvnw clean package'
             sh 'echo $BUILD_NUMBER'
             sh 'sudo docker login -u kelvintlu -p JnsJicMQb8J!mjA?'
