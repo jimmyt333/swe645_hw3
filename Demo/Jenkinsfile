@@ -12,7 +12,7 @@ pipeline {
       steps {
         script {
             dir("Demo"){
-                sh 'rm -rf ./target'
+                sh 'sudo rm -rf ./target'
                 sh 'sudo sh ./mvnw clean package -X'
                 sh 'echo $BUILD_NUMBER'
                 sh 'sudo docker login -u kelvintlu -p JnsJicMQb8J!mjA?'
