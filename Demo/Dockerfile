@@ -11,7 +11,7 @@
 FROM openjdk:17-alpine
 
 WORKDIR /app
-COPY ./Demo/target/surveyApp-0.0.1-SNAPSHOT.jar /app
+COPY ./target/surveyApp-0.0.1-SNAPSHOT.jar /app
 
 EXPOSE 8080
 
