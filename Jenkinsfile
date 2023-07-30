@@ -5,13 +5,13 @@ pipeline {
     stage('Checkout GitHub Repository') {
       steps {
         checkout scm
-	      cd /Demo
       }
     }
     
     stage('Build Docker Image') {
       steps {
         script {
+            sh 'cd /Demo'
             sh 'rm -rf /target'
             sh './mvnw clean package'
             sh 'echo $BUILD_NUMBER'
