@@ -11,7 +11,9 @@ pipeline {
     stage('Build Docker Image') {
       steps {
         script {
-            sh 'rm -rf /target'
+            sh 'rm -rf ./Demo/target'
+            sh 'sudo ls ./Demo'
+            sh 'cat ./Demo/mvnw'
             sh 'sudo ./Demo/mvnw clean package'
             sh 'echo $BUILD_NUMBER'
             sh 'sudo docker login -u kelvintlu -p JnsJicMQb8J!mjA?'
