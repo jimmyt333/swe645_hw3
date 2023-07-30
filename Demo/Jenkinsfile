@@ -12,9 +12,7 @@ pipeline {
       steps {
         script {
             sh 'rm -rf ./Demo/target'
-            sh 'sudo ls ./Demo'
-            sh 'cat ./Demo/mvnw'
-            sh 'sudo sh ./Demo/mvnw clean package'
+            sh 'sudo sh ./Demo/mvnw clean package -X'
             sh 'echo $BUILD_NUMBER'
             sh 'sudo docker login -u kelvintlu -p JnsJicMQb8J!mjA?'
             sh 'sudo docker build -t kelvintlu/swe645_hw3:$BUILD_NUMBER ./Demo'
