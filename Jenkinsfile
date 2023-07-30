@@ -5,7 +5,7 @@ pipeline {
     stage('Checkout GitHub Repository') {
       steps {
         checkout scm
-	      cd Demo
+	      cd /Demo
       }
     }
     
