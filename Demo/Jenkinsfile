@@ -11,11 +11,14 @@ pipeline {
     stage('Build Docker Image') {
       steps {
         script {
-            sh 'rm -rf ./Demo/target'
-            sh 'sudo sh ./Demo/mvnw clean package -X'
-            sh 'echo $BUILD_NUMBER'
-            sh 'sudo docker login -u kelvintlu -p JnsJicMQb8J!mjA?'
-            sh 'sudo docker build -t kelvintlu/swe645_hw3:$BUILD_NUMBER ./Demo'
+            dir("Demo"){
+                sh 'rm -rf ./target'
+                sh 'sudo sh ./mvnw clean package -X'
+                sh 'echo $BUILD_NUMBER'
+                sh 'sudo docker login -u kelvintlu -p JnsJicMQb8J!mjA?'
+                sh 'sudo docker build -t kelvintlu/swe645_hw3:$BUILD_NUMBER .'
+              
+            }
         }
       }
     }
