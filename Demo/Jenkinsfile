@@ -34,7 +34,7 @@ pipeline {
     stage('Deploy to Rancher') {
       steps {
         script {
-          sh 'kubectl set image deployment/swe645cluster container-0=kelvintlu/swe645_hw3:$BUILD_NUMBER'
+          sh 'kubectl set image deployment/surveydeploy container-0=kelvintlu/swe645_hw3:$BUILD_NUMBER'
         }
       }
     }
