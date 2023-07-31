@@ -10,9 +10,9 @@
 
 FROM openjdk:17-alpine
 
-COPY . .
-RUN rm -rf /target
-RUN /bin/sh ./mvnw clean package 
+# COPY . .
+# RUN rm -rf /target
+# RUN /bin/sh ./mvnw clean package 
 
 WORKDIR /app
 COPY ./target/surveyApp-0.0.1-SNAPSHOT.jar /app
